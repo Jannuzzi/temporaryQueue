@@ -5,8 +5,8 @@ services:
     container_name: 'localstack4'
     environment:
       - SERVICES=sqs
-      - DEFAULT_REGION=us-east-1
-      - AWS_DEFAULT_REGION=us-east-1
+      - DEFAULT_REGION=sa-east-1
+      - AWS_DEFAULT_REGION=sa-east-1
       - DEBUG=1
       - DATA_DIR=/tmp/localstack/data
     ports:
