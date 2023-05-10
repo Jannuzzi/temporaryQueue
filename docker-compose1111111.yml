@@ -3,14 +3,16 @@ version: "3.8"
 services:
   localstack:
     container_name: "${LOCALSTACK_DOCKER_NAME-localstack_main_2}"
+    hostname: localstack_main_2
     image: localstack/localstack
     ports:
       - "4566:4566"
     environment:
       - DOCKER_HOST=unix:///var/run/docker.sock
-      #- SERVICES=SQS,SNS
+      - SERVICES=sqs,sns
       - DEFAULT_REGION=sa-east-1
-      - HOSTNAME_EXTERNAL=awslocal
+      - AWS_DEFAULT_REGION=sa-east-1
+      - HOSTNAME_EXTERNAL=localstack_main_2
       #- EAGER_SERVICE_LOADING=true
     volumes:
       - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"

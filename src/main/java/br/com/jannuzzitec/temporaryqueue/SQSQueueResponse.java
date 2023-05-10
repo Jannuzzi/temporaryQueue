@@ -35,8 +35,8 @@ public class SQSQueueResponse {
         Map<String, MessageAttributeValue> headersCoppied = new HashMap<>();
         headersCoppied.put(Constants.RESPONSE_QUEUE_URL_ATTRIBUTE_NAME, messageAttributeValue);
 
-        Message messageResponse = Message.builder().body("RESPOSTA").messageAttributes(headersCoppied).build();
-        amazonSQSResponder.sendResponseMessage(MessageContent.fromMessage(messageResponse), new MessageContent("resposta da mensagem," + message));
+        Message messageResponse = Message.builder().messageAttributes(headersCoppied).body("aloha").build();
+        amazonSQSResponder.sendResponseMessage(MessageContent.fromMessage(messageResponse), new MessageContent(messageResponse.body()));
     }
 
 }
